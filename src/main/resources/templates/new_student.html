@@ -10,16 +10,15 @@
          Add an inputs for first name, last name and grade.
          Use thymeleaf to access the grades that were added to the model in the
           controller to show in the <select> pulldown list -->
-`   <form action="#" th:action="/create_student" method="POST">
+`   <form action="#" th:action="${'/create_student'}" method="POST">
         <table>
             <tr>
                 <td>First Name:</td>
-                <td><input type="text" name ="firstName" th:name="firstName"></td>
+                <td><input type="text" name ="firstName" th:name="firstName"/></td>
             </tr>
             <tr>
                 <td>Last Name:</td>
-                <td><input type="text" name="lastName"
-                           th:name="lastName"> </td>
+                <td><input type="text" name="lastName" th:name="lastName"/> </td>
             </tr>
             <tr>
                 <td>Grade:</td>
@@ -27,8 +26,8 @@
                     <!--umm huh...-->
                     <select name="grades">
                         <!-- thymeleaf option tag why is this not working? -->
-                        <option th:object="grade"
-                                th:each="grade : ${grades}"
+                        
+                        <option th:each="grade : ${grades}"
                                 th:value="${grade}"
                                 th:text="${grade}"></option>
                     </select>

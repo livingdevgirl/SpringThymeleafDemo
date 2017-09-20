@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
 public class StudentController {
 
 
-    @RequestMapping("../templates/new_student.html")
+    @RequestMapping("new_student")
     public String newStudent (Model model) {
         /* call the method on the Grade enum to get all the grades */
         model.addAttribute("grades", Grade.values ());
@@ -28,7 +30,7 @@ public class StudentController {
 
 
 
-    @RequestMapping("../templates/create_student.html")
+    @RequestMapping ("create_student")
     public String createStudent(@ModelAttribute
                                     @RequestParam(name="firstName") String firstName,
                                 /* @RequestParam for last name */
