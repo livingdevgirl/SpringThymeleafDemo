@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Create a New Student</h1>
+    <!-- Add a form to post to /create_student url.
+         Add an inputs for first name, last name and grade.
+         Use thymeleaf to access the grades that were added to the model in the
+          controller to show in the <select> pulldown list -->
+`   <form action="#" th:action="@{/create_student}" method="POST">
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name ="first_Name" th:field="firstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text"
+                           name="last_Name"> </td>
+            </tr>
+            <tr>
+                <td>Grade:</td>
+                <td>
+                    <!--umm huh...-->
+                    <select th:field="grade" name="grades">
+                        <!-- thymeleaf option tag why is this not working? -->
+                        <option th:each="grade : ${src/main/java/com.example.demo/Grade.Values()}"
+                                th:value="${grade}"
+                                th:text="${grade}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button>Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
