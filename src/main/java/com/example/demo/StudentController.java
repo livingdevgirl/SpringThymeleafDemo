@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class StudentController {
 
 
+    private String firstName;
+    private String lastName;
+    private Grade grade;
+    private Model model;
+
     @RequestMapping("new_student")
     public String newStudent (Model model) {
         /* call the method on the Grade enum to get all the grades */
@@ -32,12 +37,16 @@ public class StudentController {
 
     @RequestMapping ("create_student")
     public String createStudent(@ModelAttribute
-                                    @RequestParam(name="firstName") String firstName,
+                                    @RequestParam(value="firstName") String firstName,
                                 /* @RequestParam for last name */
-                                @RequestParam(name="lastName") String lastName,
+                                @RequestParam(value="lastName") String lastName,
                                 /* @RequestParam for grade */
-                                @RequestParam(name="grade") Grade grade,
+                                @RequestParam(value="grades") Grade grade,
                                 Model model) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.grade = grade;
+        this.model = model;
         Student student = new Student(firstName, lastName, grade);
 
         /* set student firstName, lastName and grade using the http request parameters */
