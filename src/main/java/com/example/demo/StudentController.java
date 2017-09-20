@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class StudentController {
 
 
-    @RequestMapping("/new_student")
+    @RequestMapping("../templates/new_student.html")
     public String newStudent (Model model) {
         /* call the method on the Grade enum to get all the grades */
         model.addAttribute("grades", Grade.values ());
@@ -28,11 +28,11 @@ public class StudentController {
 
 
 
-    @PostMapping("/create_student")
+    @RequestMapping("../templates/create_student.html")
     public String createStudent(@ModelAttribute
-                                    @RequestParam(name="first_Name") String firstName,
+                                    @RequestParam(name="firstName") String firstName,
                                 /* @RequestParam for last name */
-                                @RequestParam(name="last_Name") String lastName,
+                                @RequestParam(name="lastName") String lastName,
                                 /* @RequestParam for grade */
                                 @RequestParam(name="grade") Grade grade,
                                 Model model) {
